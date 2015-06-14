@@ -7,7 +7,6 @@ def adherents(request, asso_slug=None):
         members = Adherent.objects.all().select_related('association')
     else :
         members = Adherent.objects.filter(association__slug=asso_slug).select_related('association')
-        import pdb; pdb.set_trace()
     return render(request, 'adherents.html', {'members':members})
 
 def associations(request, asso_slug=None):
