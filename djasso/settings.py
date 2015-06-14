@@ -110,4 +110,3 @@ STATICFILES_DIRS = (
 
 LOCALE_PATHS =(
     BASE_DIR + '/locale', )
-
