@@ -15,10 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from myasso.views import adherents, associations
+from myasso.views import adherents, associations, createAdherentForm, saveAdherent, viewAdherent
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^adherents/create/([0-9]*)$', createAdherentForm, name='adherent_create'),
+    url(r'^adherents/create$', createAdherentForm, name='adherent_create'),
+    url(r'^adherents/save/([0-9]*)$', saveAdherent, name='adherent_save'),
+    url(r'^adherents/save$', saveAdherent, name='adherent_save'),
+    url(r'^adherents/([0-9]*)$', viewAdherent, name='adherent_view'),
     url(r'^adherents$', adherents),
     url(r'^associations/(\w*)/adherents$', adherents, name='association_adherents_list'),
     url(r'^associations/(\w*)$', associations, name='association_list'),

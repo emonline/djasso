@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 class Association(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -26,15 +27,16 @@ class Adherent(models.Model):
     )
     role = models.CharField(max_length=10,
                             choices=ROLE_CHOICES,
-                            default='')
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    email = models.EmailField()
-    phone = models.CharField(max_length=11)
-    address = models.CharField(max_length=100)
-    zipcode = models.IntegerField()
-    city = models.CharField(max_length=50)
-    accessiondate = models.DateField()
+                            default='',
+                            verbose_name=_('role'))
+    first_name = models.CharField(max_length=100, verbose_name=_('first_name'))
+    last_name = models.CharField(max_length=100, verbose_name=_('last_name'))
+    email = models.EmailField(verbose_name=_('email'))
+    phone = models.CharField(max_length=11, verbose_name=_('phone'))
+    address = models.CharField(max_length=100, verbose_name=_('address'))
+    zipcode = models.IntegerField(verbose_name=_('zipcode'))
+    city = models.CharField(max_length=50, verbose_name=_('city'))
+    accessiondate = models.DateField(verbose_name=_('accesiondate'))
     association = models.ForeignKey(Association)
 
     def __str__(self):
